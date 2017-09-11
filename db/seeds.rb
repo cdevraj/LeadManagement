@@ -7,3 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 user = CreateAdminService.new.call
 puts 'CREATED ADMIN USER: ' << user.email
+
+Role.create(name: 'User') if Role.where(name: 'LeadGenerator').last.blank?
+Role.create(name: 'Manager') if Role.where(name: 'Manager').last.blank?
+Role.create(name: 'Admin') if Role.where(name: 'Admin').last.blank?
