@@ -1,0 +1,15 @@
+<h4>Leads</h4>
+<table border="2">
+<tr>
+<td>FirstName</td>
+<td>LastName</td>
+<td>Email</td>
+</tr>
+<% @leads.each do |lead| %>
+  <tr>
+    <td><%= lead.first_name %></td>
+    <td><%= lead.last_name %></td>
+    <td><%= lead.email %></td>
+  </tr>
+<% end %>
+</table>
