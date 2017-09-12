@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
 end
 ruby '2.3.1'
 gem 'rails', '~> 5.1.3'
-gem 'sqlite3'
 gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -18,9 +17,11 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'jquery-rails'
 gem 'therubyracer', :platform=>:ruby
+gem 'pg'
 group :development do
   gem 'better_errors'
   gem 'rails_layout'
+  #gem 'sqlite3'
 end
 group :development, :test do
   gem 'pry-rails'
