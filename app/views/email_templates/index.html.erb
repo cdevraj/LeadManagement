@@ -8,7 +8,7 @@
   <tr>
     <td><%= template.subject %></td>
     <td><%= template.content %></td>
-    <td><%= link_to 'Choose', send_email_path(id: template.id) %></td>
+    <td><%= link_to 'Choose', compose_email_path(id: template.id) %></td>
   </tr>
 <% end %>
 </table>

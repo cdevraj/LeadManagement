@@ -6,7 +6,7 @@ class EmailTemplatesController < BaseController
   	@email_templates = EmailTemplate.default_templates(current_user.id)
   end	
 
-  def send_email
+  def compose_email
   	@email_template = EmailTemplate.where(id: params[:id]).last
   	if @email_template.blank? || (@email_template.user_id.present? && @email_template.user_id != current_user.id)
   	  redirect_to root_path	
@@ -14,6 +14,11 @@ class EmailTemplatesController < BaseController
   	  @user_ids = current_user.lead_generators.collect(&:id) << current_user.id
     end 
   end	
+
+  def send_email 
+    UserMailer.send_email(params).deliver		
+    EmailConversation.save_email(params)
+  end
 
   def new
   	@email_template = EmailTemplate.new
