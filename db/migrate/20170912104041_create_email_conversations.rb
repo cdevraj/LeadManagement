@@ -7,6 +7,8 @@ class CreateEmailConversations < ActiveRecord::Migration[5.1]
       t.string :subject
       t.text :content
       t.string :smtp
+      t.is_sent :boolean
+      t.sent_date :datetime 
       t.timestamps
     end
   end

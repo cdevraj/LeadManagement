@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   get 'lead_generators', to: 'users#lead_generators'	
   resources :leads
   resources :email_templates
-  get 'send_email', to: 'email_templates#send_email'	
+  post 'send_email', to: 'email_templates#send_email'	
+  get 'compose_email', to: 'email_templates#compose_email'  
 
   # Admin routes  
 	namespace :admin do
