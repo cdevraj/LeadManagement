@@ -1,0 +1,12 @@
+<div class="col-sm-4">
+  <div class="form-group">
+    <%= f.text_field :subject, placeholder: 'Subject', class: 'form-control', required: true %>
+  </div>	
+  <div class="form-group">
+    <%= f.text_area :content, cols: 40, rows: 10, placeholder: 'Body', class: 'form-control', required: true %>
+  </div>
+  <div class="form-group">  
+    <%= f.submit 'Save', class: 'btn' %>  
+  </div>
+ </div> 
+

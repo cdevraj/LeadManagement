@@ -1,0 +1,14 @@
+<%= link_to 'Add new template', new_email_template_path %><br/><br/>
+<table>
+<tr>
+  <th>Subject</th>
+  <th>Content</th>
+</tr>
+<% @email_templates.each do |template| %>
+  <tr>
+    <td><%= template.subject %></td>
+    <td><%= template.content %></td>
+    <td><%= link_to 'Choose', send_email_path(id: template.id) %></td>
+  </tr>
+<% end %>
+</table>

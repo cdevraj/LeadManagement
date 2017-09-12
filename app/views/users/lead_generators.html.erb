@@ -1,0 +1,19 @@
+<style type="text/css">
+    td{padding: 5px}
+</style>
+
+<h4>Users</h4>  
+<table border="1">
+<tr>
+<td>Name</td>
+<td>Email</td>
+<td>Leads</td>
+</tr>
+<% @lead_generators.each do |user| %>
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= user.email %></td>
+    <td><%= link_to 'Leads', leads_path(user_id: user.id) %></td>
+  </tr>
+<% end %>
+</table>

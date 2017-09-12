@@ -1,0 +1,2 @@
+class EmailConversation < ApplicationRecord
+end

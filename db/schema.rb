@@ -10,9 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170911095426) do
+ActiveRecord::Schema.define(version: 20170912104041) do
+
+  create_table "email_conversations", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "reciever_id"
+    t.string "reciever_email"
+    t.string "subject"
+    t.text "content"
+    t.string "smtp"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "email_templates", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "subject"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "leads", force: :cascade do |t|
+    t.integer "user_id"
     t.string "first_name"
     t.string "last_name"
     t.string "email"
@@ -34,6 +54,13 @@ ActiveRecord::Schema.define(version: 20170911095426) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_lead_generators", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "lead_generator_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -48,6 +75,7 @@ ActiveRecord::Schema.define(version: 20170911095426) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.integer "role_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

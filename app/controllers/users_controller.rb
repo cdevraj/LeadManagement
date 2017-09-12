@@ -1,6 +1,5 @@
-class UsersController < ApplicationController
-  before_action :authenticate_user!
-
+class UsersController < BaseController
+  
   def index
     @users = User.all
   end
@@ -11,5 +10,9 @@ class UsersController < ApplicationController
       redirect_to root_path, :alert => "Access denied."
     end
   end
+
+  def lead_generators
+    @lead_generators = current_user.lead_generators
+  end  
 
 end

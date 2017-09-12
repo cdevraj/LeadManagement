@@ -5,9 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-user = CreateAdminService.new.call
-puts 'CREATED ADMIN USER: ' << user.email
+# user = CreateAdminService.new.call
+# puts 'CREATED ADMIN USER: ' << user.email
 
-Role.create(name: 'User') if Role.where(name: 'LeadGenerator').last.blank?
+Role.create(name: 'LeadGenerator') if Role.where(name: 'LeadGenerator').last.blank?
 Role.create(name: 'Manager') if Role.where(name: 'Manager').last.blank?
 Role.create(name: 'Admin') if Role.where(name: 'Admin').last.blank?
+
+EmailTemplate.create(content: 'Hi welcome to the board', subject: 'welcome to the board')
+EmailTemplate.create(content: 'Hi, Please let us know', subject: 'reminder')

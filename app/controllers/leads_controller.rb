@@ -10,7 +10,12 @@ class LeadsController < BaseController
   end	
 
   def index
-   @leads = current_user.leads
+    if params[:user_id].present?
+      Lead
+      @leads = Lead.where(user_id: params[:user_id])
+    else
+      @leads = current_user.leads
+    end  
   end 	
 
   private

@@ -11,21 +11,33 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-    <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <li class="sidebar-brand">
-                <a href="#">
-                    Start Bootstrap
-                </a>
-            </li>
-            <li>
-                <a href="#">Dashboard</a>
-            </li>
-            <li>
-              <%= link_to 'Leads', new_lead_path %>  
-            </li>       
+      <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">        
+          <li>
+            <a href="#">Dashboard</a>
+          </li>
+          <% if user_signed_in? %>
+            <% if current_user.is_lead_generator? %>
+              <li>
+                <%= link_to 'Leads', leads_path %>  
+              </li>       
+            <% end %>  
+            <% if current_user.is_manager? %>
+              <li>
+                <%= link_to 'LeadGenerators', lead_generators_path %>  
+              </li> 
+              <li>
+                <%= link_to 'Email Templates', email_templates_path %>  
+              </li> 
+            <% end %>  
+            <% if current_user.is_admin? %>
+              <li>
+                <%= link_to 'Users', admin_list_users_path %>  
+              </li>               
+            <% end %> 
+          <% end %>  
         </ul>
-    </div>
+      </div>
     <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->

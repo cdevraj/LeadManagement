@@ -1,0 +1,29 @@
+<style type="text/css">
+	td{padding: 5px}
+</style>
+
+<h4>Users</h4>  
+<table border="1">
+<tr>
+<td>Name</td>
+<td>Email</td>
+<td>Role</td>
+<td>Assign Manager</td>
+</tr>
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= user.email %></td>
+    <td><%= user.role.name rescue '' %></td>
+    <% if user.is_lead_generator? %>
+      <%= form_tag admin_assign_manager_path do %>
+        <td>
+         <%= select_tag 'manager_id', options_for_select(User.managers.map{|x| [x.name, x.id]}) %>     
+         <%= hidden_field_tag 'user_id', user.id %>
+         <%= submit_tag 'Assign' %>
+        </td>     
+        <% end %>  
+    <% end %>  
+  </tr>
+<% end %>
+</table>

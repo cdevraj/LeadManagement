@@ -1,15 +1,36 @@
+<style type="text/css">
+	td{padding: 5px}
+</style>
+
 <h4>Leads</h4>
-<table border="2">
+<%= link_to 'Add Lead', new_lead_path, style: 'float:right' %>  
+<table border="1">
 <tr>
 <td>FirstName</td>
 <td>LastName</td>
 <td>Email</td>
+<td>Email2</td>
+<td>Phone</td>
+<td>Phone2</td>
+<td>Category</td>
+<td>Company Url</td>
+<td>Status</td>
+<td>Comment</td>
+<td>About me</td>
 </tr>
 <% @leads.each do |lead| %>
   <tr>
     <td><%= lead.first_name %></td>
     <td><%= lead.last_name %></td>
     <td><%= lead.email %></td>
+    <td><%= lead.email2 %></td>
+    <td><%= lead.phone_number %></td>
+    <td><%= lead.phone_number2 %></td>
+    <td><%= lead.category %></td>
+    <td><%= lead.company_url %></td>
+    <td><%= lead.status %></td>
+    <td><%= lead.comment %></td>
+    <td><%= lead.about_me %></td>
   </tr>
 <% end %>
 </table>
