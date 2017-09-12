@@ -8,7 +8,7 @@ class CreateEmailConversations < ActiveRecord::Migration[5.1]
       t.text :content
       t.string :smtp
       t.boolean :is_sent
-      t.sent_date :datetime 
+      t.datetime :sent_date
       t.timestamps
     end
   end
