@@ -18,7 +18,8 @@
     <% if user.is_lead_generator? %>
       <%= form_tag admin_assign_manager_path do %>
         <td>
-         <%= select_tag 'manager_id', options_for_select(User.managers.map{|x| [x.name, x.id]}) %>     
+         <% existing_manager = user.my_manager.present? ? user.my_manager.user_id : nil %>
+         <%= select_tag 'manager_id', options_for_select(User.managers.map{|x| [x.name, x.id]}, existing_manager), include_blank: true%>     
          <%= hidden_field_tag 'user_id', user.id %>
          <%= submit_tag 'Assign' %>
         </td>     

@@ -34,5 +34,12 @@ class User < ApplicationRecord
   def self.managers
     where("role_id in(select id from roles where name = 'Manager')")
   end    
+  
+
+  # Existimg manager
+  def my_manager
+    UserLeadGenerator.where(lead_generator_id: id).last
+  end  
+
 
 end
