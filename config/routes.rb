@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   # Chat history
   get 'chat_history', to: 'email_conversations#chat_history'  
+  get 'scheduled_emails', to: 'email_conversations#scheduled_emails'  
   post 'add_notes', to: 'email_conversations#add_notes'  
 
 end
