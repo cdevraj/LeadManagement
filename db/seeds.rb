@@ -14,3 +14,7 @@ Role.create(name: 'Admin') if Role.where(name: 'Admin').last.blank?
 
 EmailTemplate.create(content: 'Hi welcome to the board', subject: 'welcome to the board')
 EmailTemplate.create(content: 'Hi, Please let us know', subject: 'reminder')
+
+User.create(name: 'admin', email: 'admin@yopmail.com', password: '123456', password_confirmation: '123456', role_id: 3)
+User.create(name: 'manager', email: 'manager@yopmail.com', password: '123456', password_confirmation: '123456', role_id: 2)
+User.create(name: 'leadgenerator', email: 'lg@yopmail.com', password: '123456', password_confirmation: '123456', role_id: 1)
