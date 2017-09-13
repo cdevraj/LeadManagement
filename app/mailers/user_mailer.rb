@@ -6,7 +6,8 @@ class UserMailer < ApplicationMailer
 
   def send_email(params)
     @content = params[:content]
-    mail(to: "jsamant@grepruby.com", subject: params[:subject])
+    email = Lead.where(id: params[:receiver_id]).last.email rescue 'jsamant@grepruby.com'
+    mail(to: email, subject: params[:subject], from: "\"Lead Generator\" <admin@leadgenerator.com>")
     # mail(
     #   to: 'jsamant@grepruby.com',#params[:receiver],
     #   subject: params[:subject],

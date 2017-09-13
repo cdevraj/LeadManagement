@@ -4,8 +4,13 @@ class EmailConversationsController < BaseController
 
   # Chat history of lead
   def chat_history
-  	@chat_history = EmailConversation.where(receiver_id: params[:lead_id])
+  	@chat_history = EmailConversation.where(receiver_id: params[:lead_id], is_sent: true)
   end	
+
+  # Chat history of lead
+  def scheduled_emails
+    @chat_history = EmailConversation.where("sender_id = #{current_user.id} AND sent_date is not null")
+  end 
 
   # Add notes to chat history
   def add_notes

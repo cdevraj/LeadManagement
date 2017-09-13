@@ -1,0 +1,19 @@
+
+<table>
+<tr>
+  <th>Email</th>
+  <th>Content</th>
+  <th>Content</th>
+  <th>Scheduled on</th>
+</tr>
+<% @chat_history.each do |chat| %>
+  <% if chat.is_sent == false %>
+  <tr>
+    <td><%= Lead.find(chat.receiver_id).email rescue nil %></td>
+    <td><%= chat.subject %></td>
+    <td><%= chat.content %></td>
+    <td><%= chat.sent_date.strftime("%D") %></td>
+  </tr>
+  <% end %>
+<% end %>
+</table>

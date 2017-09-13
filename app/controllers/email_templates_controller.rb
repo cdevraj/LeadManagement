@@ -18,8 +18,8 @@ class EmailTemplatesController < BaseController
 
   # Send email
   def send_email 
-    #UserMailer.send_email(params).deliver		
     EmailConversation.save_email(params, current_user)
+    redirect_to email_templates_path
   end
 
   def new
