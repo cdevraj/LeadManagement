@@ -17,6 +17,9 @@
 <td>Status</td>
 <td>Comment</td>
 <td>About me</td>
+<% if current_user.is_manager? %>
+  <td>Assign to manager</td>
+<% end %>  
 </tr>
 <% @leads.each do |lead| %>
   <tr>
@@ -31,6 +34,15 @@
     <td><%= lead.status %></td>
     <td><%= lead.comment %></td>
     <td><%= lead.about_me %></td>
+    <% if current_user.is_manager? %>
+      <%= form_tag change_lead_owner_path do %>
+        <td>    
+         <%= select_tag 'user_id', options_for_select(User.managers.map{|x| [x.name, x.id]}, current_user.id), include_blank: true%>     
+         <%= hidden_field_tag 'lead_id', lead.id %>
+         <%= submit_tag 'Assign' %>
+        </td>     
+        <% end %>  
+    <% end %>  
   </tr>
 <% end %>
 </table>

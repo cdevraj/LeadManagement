@@ -16,7 +16,16 @@ class LeadsController < BaseController
     else
       @leads = current_user.leads
     end  
-  end 	
+  end 
+
+  # Manager can change the owner of the lead
+  def change_lead_owner
+    lead = Lead.where(id: params[:lead_id]).last
+    if lead.present? && lead.user_id == current_user.id && current_user.is_manager?
+      lead.update_attributes(user_id: params[:user_id])
+    end  
+    redirect_to leads_path
+  end 
 
   private
   def lead_params

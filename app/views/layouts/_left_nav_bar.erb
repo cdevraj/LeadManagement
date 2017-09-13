@@ -1,14 +1,6 @@
-<%# Rails flash messages styled for Bootstrap 3.0 %>
-<% flash.each do |name, msg| %>
-  <% if msg.is_a?(String) %>
-    <div class="alert alert-dismissible alert-<%= name.to_s == 'notice' ? 'success' : 'danger' %>">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= content_tag :div, msg, :id => "flash_#{name}" %>
-    </div>
-  <% end %>
-<% end %>
 
 <div id="wrapper">
+<%# Rails flash messages styled for Bootstrap 3.0 %>
 
     <!-- Sidebar -->
       <div id="sidebar-wrapper">
@@ -17,7 +9,7 @@
             <a href="#">Dashboard</a>
           </li>
           <% if user_signed_in? %>
-            <% if current_user.is_lead_generator? %>
+            <% unless current_user.is_admin? %>
               <li>
                 <%= link_to 'Leads', leads_path %>  
               </li>       
@@ -45,6 +37,14 @@
         <div class="container-fluid">
             <div class="row">
                 <div>
+                <% flash.each do |name, msg| %>
+                    <% if msg.is_a?(String) %>
+                      <div class="alert alert-dismissible alert-<%= name.to_s == 'notice' ? 'success' : 'danger' %>">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+                      </div>
+                    <% end %>
+                  <% end %>
                    <!--  <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a> -->
                 </div>
             </div>
