@@ -6,6 +6,7 @@ class EmailTemplatesController < BaseController
   	@email_templates = EmailTemplate.default_templates(current_user.id)
   end	
 
+  # Compose custom email before send
   def compose_email
   	@email_template = EmailTemplate.where(id: params[:id]).last
   	if @email_template.blank? || (@email_template.user_id.present? && @email_template.user_id != current_user.id)
@@ -15,9 +16,10 @@ class EmailTemplatesController < BaseController
     end 
   end	
 
+  # Send email
   def send_email 
-    UserMailer.send_email(params).deliver		
-    EmailConversation.save_email(params)
+    #UserMailer.send_email(params).deliver		
+    EmailConversation.save_email(params, current_user)
   end
 
   def new

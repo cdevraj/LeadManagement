@@ -19,6 +19,7 @@
 <td>About me</td>
 <% if current_user.is_manager? %>
   <td>Assign to manager</td>
+  <td>Chat history</td>
 <% end %>  
 </tr>
 <% @leads.each do |lead| %>
@@ -42,6 +43,9 @@
          <%= submit_tag 'Assign' %>
         </td>     
         <% end %>  
+      <td>
+        <%= link_to 'Chat History', chat_history_path(lead_id: lead.id) %>
+      </td>  
     <% end %>  
   </tr>
 <% end %>

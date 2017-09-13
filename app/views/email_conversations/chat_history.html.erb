@@ -1,0 +1,18 @@
+
+<% @chat_history.each do |chat| %>
+    <p><%= chat.content %></p>	
+    <div style="margin-left: 10px">	
+	  <% chat.notes.each do |note| %>
+	    <p><%= note.content %> by <%= note.user.name rescue 'NA' %> on <%= note.created_at.strftime("at %I:%M%p") %></p>
+	  <% end %>
+    </div>
+    <%= form_tag add_notes_path do %>
+        <p>
+         <%= text_field_tag 'body', nil %>
+         <%= hidden_field_tag 'email_conversation_id', chat.id %>
+         <%= hidden_field_tag 'user_id', current_user.id %>
+         <%= hidden_field_tag 'lead_id', params[:lead_id] %>
+         <%= submit_tag 'Add Note' %>
+        </p>     
+        <% end %>
+<% end %>

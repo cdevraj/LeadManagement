@@ -7,6 +7,7 @@ class User < ApplicationRecord
   before_create :assign_role
   belongs_to :role, optional: true
   has_many :leads
+  has_many :notes
   has_many :user_lead_generators
   has_many :lead_generators, through: :user_lead_generators
   has_many :inverse_user_lead_generators, class_name: "UserLeadGenerator", foreign_key: "manager_id"

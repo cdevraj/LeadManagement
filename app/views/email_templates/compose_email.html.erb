@@ -1,10 +1,10 @@
 <%= form_tag send_email_path do %>
   Receiver:<br/>
   <%#= email_field_tag 'receiver', nil, required: true %>
-  <%#= select_tag 'receiver', options_for_select(Lead.where(user_id: @user_ids).map{|x| ["#{x.first_name} #{x.last_name}", x.id]}), required: true %>     	
+  <%= select_tag 'receiver_id', options_for_select(Lead.where(user_id: @user_ids).map{|x| ["#{x.email}", x.id]}), required: true %>     	
   <br/><br/>
   SMTP method:<br/>
-    <%= select_tag 'smtp', options_for_select([['Gmail', 'Gmail'], ['SendGrid', 'SendGrid']]) %><br/><br/>
+    <%= select_tag 'smtp', options_for_select(['Mailgun', 'Gmail', 'SendGrid']) %><br/><br/>
   Send on:<br/>
   <%= date_select 'send_date', '', {include_blank: true, start_year: Date.current.year} %>     	
   <br/><br/>
