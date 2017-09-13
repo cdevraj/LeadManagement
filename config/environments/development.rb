@@ -45,6 +45,11 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+config.action_mailer.delivery_method = :mailgun
+config.action_mailer.mailgun_settings = {
+    api_key: 'key-73240db91b36d419102645eb8b2f06e7',
+    domain: 'sandbox40cdf2dcaea9450e8b911720c0eda2c5.mailgun.org'
+}
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 

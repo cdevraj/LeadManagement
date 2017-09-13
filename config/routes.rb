@@ -17,4 +17,8 @@ Rails.application.routes.draw do
   	  post 'assign_manager', to: "users#assign_manager"
 	end
 
+  # Chat history
+  get 'chat_history', to: 'email_conversations#chat_history'  
+  post 'add_notes', to: 'email_conversations#add_notes'  
+
 end
