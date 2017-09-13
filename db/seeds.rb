@@ -16,5 +16,7 @@ EmailTemplate.create(content: 'Hi welcome to the board', subject: 'welcome to th
 EmailTemplate.create(content: 'Hi, Please let us know', subject: 'reminder')
 
 User.create(name: 'admin', email: 'admin@yopmail.com', password: '123456', password_confirmation: '123456', role_id: 3)
-User.create(name: 'manager', email: 'manager@yopmail.com', password: '123456', password_confirmation: '123456', role_id: 2)
+User.create(name: 'manager1', email: 'manager@yopmail.com', password: '123456', password_confirmation: '123456', role_id: 2)
+User.create(name: 'manager2', email: 'manager2@yopmail.com', password: '123456', password_confirmation: '123456', role_id: 2)
 User.create(name: 'leadgenerator', email: 'lg@yopmail.com', password: '123456', password_confirmation: '123456', role_id: 1)
+User.create(name: 'leadgenerator2', email: 'lg2@yopmail.com', password: '123456', password_confirmation: '123456', role_id: 1)
